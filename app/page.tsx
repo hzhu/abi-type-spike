@@ -1,4 +1,19 @@
 import Image from 'next/image'
+import { erc20Abi } from './erc20Abi'
+import { exchangeProxyAbi } from './exchangeProxyAbi'
+import { AbiParametersToPrimitiveTypes, ExtractAbiFunction } from 'abitype'
+
+export type TransferInputTypes = AbiParametersToPrimitiveTypes<
+  ExtractAbiFunction<typeof erc20Abi, 'transfer'>['inputs']
+>
+
+export type MultiplexBatchSellTokenForTokenInputTypes = AbiParametersToPrimitiveTypes<
+  ExtractAbiFunction<
+    typeof exchangeProxyAbi,
+    "multiplexBatchSellTokenForToken"
+  >["inputs"]
+>;
+
 
 export default function Home() {
   return (
